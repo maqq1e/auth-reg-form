@@ -10,14 +10,12 @@ class Database_Main extends Database
                 SET
                     login 			= :login,
                     password 		= :password,
-                    password_salt 	= :password_salt,
                     leng            = :leng
                     pic             = :pic';
 
         $vars = array(
             ':login' 				=> $data['login'],
             ':password' 			=> $data['password'],
-            ':password_salt' 		=> $data['password_salt'],
             ':leng' 			    => $data['leng'],
             ':pic' 			        => $data['pic'],
         );
@@ -30,7 +28,6 @@ class Database_Main extends Database
                 SET
                     login 			= :login,
                     password 		= :password,
-                    password_salt 	= :password_salt,
                     leng            = :leng,
                     pic             = :pic;
                 WHERE
@@ -39,7 +36,6 @@ class Database_Main extends Database
         $vars = array(
             ':login' 				=> $data['login'],
             ':password' 			=> $data['password'],
-            ':password_salt' 		=> $data['password_salt'],
             ':leng' 			    => $data['leng'],
             ':pic' 			        => $data['pic'],
             ':id' 				    => $data['id'],

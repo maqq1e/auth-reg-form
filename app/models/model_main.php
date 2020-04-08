@@ -6,7 +6,7 @@ class Model_Main extends Model
         $this->db = new Database_Main();
     }
 
-	public function get_data()
+	public function get_data($data)
     {
 		return array(
             'name' => 'Daniel',

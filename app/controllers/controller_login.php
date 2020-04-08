@@ -1,11 +1,11 @@
 <?php
 
-class Controller_Register extends Controller
+class Controller_Login extends Controller
 {
 	function __construct()
 	{
 		parent::__construct();
-		$this->model = new Model_Register();
+		$this->model = new Model_Login();
 	}
 
 	function action_index()
@@ -15,7 +15,7 @@ class Controller_Register extends Controller
 		{
 			return $data;
 		}
-		$this->model->set_data($data);
+		$this->model->get_login($data);
 		if(count($this->model->error) > 0)
 		{
 			foreach ($this->model->error as $error) {

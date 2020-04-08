@@ -10,14 +10,12 @@ class Database_Register extends Database
                 SET
                     login 			= :login,
                     password 		= :password,
-                    password_salt 	= :password_salt,
                     leng            = :leng,
                     pic             = :pic';
 
         $vars = array(
             ':login' 				=> $data['login'],
             ':password' 			=> $data['password'],
-            ':password_salt' 		=> $data['password_salt'],
             ':leng' 			    => $data['leng'],
             ':pic' 			        => $data['pic'],
         );
@@ -26,7 +24,7 @@ class Database_Register extends Database
 
     public function getUserByUserLogin($login)
     {
-        $sql = 'SELECT login, password, password_salt, leng, pic FROM ' . self::TABLE_USERS . '
+        $sql = 'SELECT login, password, leng, pic FROM ' . self::TABLE_USERS . '
                 WHERE
                     login 			= :login';
 

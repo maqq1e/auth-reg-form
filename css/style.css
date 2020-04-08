@@ -1,3 +1,7 @@
+body {
+    overflow-x: hidden;
+}
+
 * {
     margin: 0px auto;
     padding: 0px;
@@ -5,20 +9,34 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+.error {
+    color: #e44747d4;
+    margin: 10px 0;
+}
+
+.success {
+    color: #126b12d1;
+    font-weight: 800;
+}
+
+@keyframes backgroundScroll {
+    from {background-position: 0 0;}
+    to {background-position: -180px 0px;}
+}
+
+@-webkit-keyframes backgroundScroll {
+    from {background-position: 0 0;}
+    to {background-position: -180px 0px;}
+}
+
 .cotn_principal {
     position: absolute;
-    width: 100%;
+    width: 110%;
     height: 100%;
-    background: #cfd8dc;
-    /* Old browsers */
-    background: -moz-linear-gradient(-45deg, #cfd8dc 0%, #607d8b 100%, #b0bec5 100%);
-    /* FF3.6-15 */
-    background: -webkit-linear-gradient(-45deg, #cfd8dc 0%, #607d8b 100%, #b0bec5 100%);
-    /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(135deg, #cfd8dc 0%, #607d8b 100%, #b0bec5 100%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cfd8dc', endColorstr='#b0bec5', GradientType=1);
-    /* IE6-9 fallback on horizontal gradient */
+    left: -5%;
+    background: url('../images/form_back.jpg') no-repeat center center;
+    background-position-y: 0!important;
+    background-size: cover;
 }
 
 

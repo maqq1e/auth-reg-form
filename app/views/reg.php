@@ -28,19 +28,20 @@
                     <img src="../images/form_back.jpg"
                         alt="" />
                 </div>
-                <div class="cont_form_login">
+                <div class="cont_form_login log_wrap">
                     <a href="#" onclick="ocultar_login_sign_up()"><i class="fas fa-arrow-left"></i></a>
                     <h2>LOGIN</h2>
-                    <input type="text" placeholder="Email" />
-                    <input type="password" placeholder="Password" />
-                    <button class="btn_login" id="" onclick="cambiar_login()">LOGIN</button>
+                    <input type="text" class="login" name="login" placeholder="User" />
+                    <input type="password" class="password" name="password" placeholder="Password" />
+                    <button class="btn_login" id="log" onclick="cambiar_login()">LOGIN</button>
+                    <div class='output'></div>
                 </div>
                 <div class="cont_form_sign_up reg_wrap">
                     <a href="#" onclick="ocultar_login_sign_up()"><i class="fas fa-arrow-left"></i></a>
                     <h2>SIGN UP</h2>
-                    <input type="text" id="login" name="login" placeholder="User" />
-                    <input type="password" id="password" name="password" placeholder="Password" />
-                    <input type="password" id="password2" name="password2" placeholder="Confirm Password" />
+                    <input type="text" class="login" name="login" placeholder="User" />
+                    <input type="password" class="password" name="password" placeholder="Password" />
+                    <input type="password" class="password2" name="password2" placeholder="Confirm Password" />
                     <button class="btn_sign_up" id="reg" onclick="cambiar_sign_up()">SIGN UP</button>
                     <div class='output'></div>
                 </div>

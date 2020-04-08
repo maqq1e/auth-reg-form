@@ -20,6 +20,11 @@ class Route
 		{
 			$action_name = $routes[2];
 		}
+		// If user is not login yet
+		if($controller_name == 'Main' && $_SESSION['user_id'])
+		{
+			header('Location: /reg');
+		}
 
 		// Add prefix
         $model_name         = 'Model_'.$controller_name;
@@ -52,12 +57,12 @@ class Route
 		}
 		else
 		{
-			if(!IS_PRODUCTION)
+			if(IS_PRODUCTION)
 			{
-				throw new Error('Controller is not exist!');
+				Route::ErrorPage404();
 			}
 			else {
-				Route::ErrorPage404();
+				throw new Error('Controller is not exist!');
 			}
 		}
 
@@ -72,7 +77,7 @@ class Route
 		}
 		else
 		{
-			if(!IS_PRODUCTION)
+			if(IS_PRODUCTION)
 			{
 				throw new Error('Action is not exist!');
 			}
@@ -83,7 +88,7 @@ class Route
 
 	}
 
-	function ErrorPage404()
+	static function ErrorPage404()
 	{
         $host = 'http://'.$_SERVER['HTTP_HOST'].'/';
         header('HTTP/1.1 404 Not Found');
