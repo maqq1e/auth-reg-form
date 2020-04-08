@@ -11,6 +11,10 @@ class Controller_Register extends Controller
 	function action_index()
 	{
 		$data = $this->model->verificateData($_POST);
+		if(gettype($data) == 'string')
+		{
+			return $data;
+		}
 		$this->model->set_data($data);
 		if($this->model->error)
 		{

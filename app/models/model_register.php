@@ -46,7 +46,7 @@ class Model_Register extends Model
         $data['leng']       = isset($_SESSION['leng']) ? $_SESSION['leng'] : "ru";
         $data['pic']        = isset($data['pic']) ? $data['pic'] : 0;
 
-        if($this->error)
+        if(count($this->error) > 0)
 		{
 			foreach ($this->error as $error) {
 				print($error);

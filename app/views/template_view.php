@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
 
 	<title>Главная</title>
 </head>
@@ -14,6 +15,7 @@
 
     <script src="/js/jquery3.min.js" type="text/javascript"></script>
     <script src="/js/script.js" type="text/javascript"></script>
+	<script src="/js/fontawesome.js" crossorigin="anonymous"></script>
     <script src="/js/index.js" type="text/javascript"></script>
 </body>
 </html>

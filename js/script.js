@@ -8,7 +8,7 @@ function registNewUser(){
         data: {login:login, password:password, password2: password2}
     }).done(function( result )
         {
-            $(".output").html( result )
+            $(".reg_wrap .output").html( result )
         });
 }
 
