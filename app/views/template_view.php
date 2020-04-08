@@ -9,9 +9,7 @@
 	<title>Главная</title>
 </head>
 <body>
-	<?php include 'application/views/'.$content_view; ?>
-
-
+	<?php include 'app/views/'.$content_view; ?>
 
 
     <script src="/js/jquery-1.6.2.js" type="text/javascript"></script>

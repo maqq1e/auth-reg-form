@@ -11,6 +11,6 @@ class View
 			extract($data);
 		}
 		*/
-		include 'application/views/'.$template_view;
+		include 'app/views/'.$template_view;
 	}
 }
