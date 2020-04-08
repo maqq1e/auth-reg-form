@@ -4,8 +4,8 @@ class Route
 	static function start()
 	{
 		// Controller and default action
-		$controller_name = 'Main';
-		$action_name = 'index';
+		$controller_name    = 'Main';
+		$action_name        = 'index';
 
 		$routes = explode('/', $_SERVER['REQUEST_URI']);
 
@@ -22,10 +22,18 @@ class Route
 		}
 
 		// Add prefix
-		$model_name = 'Model_'.$controller_name;
-		$controller_name = 'Controller_'.$controller_name;
-		$action_name = 'action_'.$action_name;
+        $model_name         = 'Model_'.$controller_name;
+		$database_name      = 'Database_'.$controller_name;
+		$controller_name    = 'Controller_'.$controller_name;
+		$action_name        = 'action_'.$action_name;
 
+		// Connect file with database class ( if it is exist )
+		$database_file = strtolower($database_name).'.php';
+		$database_path = "app/database/".$database_file;
+		if(file_exists($database_path))
+		{
+			include "app/database/".$database_file;
+		}
 		// Connect file with modal class ( if it is exist )
 
 		$model_file = strtolower($model_name).'.php';
@@ -44,7 +52,13 @@ class Route
 		}
 		else
 		{
-			Route::ErrorPage404();
+			if(!IS_PRODUCTION)
+			{
+				throw new Error('Controller is not exist!');
+			}
+			else {
+				Route::ErrorPage404();
+			}
 		}
 
 		// Create controller
@@ -58,12 +72,18 @@ class Route
 		}
 		else
 		{
-			Route::ErrorPage404();
+			if(!IS_PRODUCTION)
+			{
+				throw new Error('Action is not exist!');
+			}
+			else {
+				Route::ErrorPage404();
+			}
 		}
 
 	}
 
-	static function ErrorPage404()
+	function ErrorPage404()
 	{
         $host = 'http://'.$_SERVER['HTTP_HOST'].'/';
         header('HTTP/1.1 404 Not Found');

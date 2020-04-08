@@ -12,6 +12,8 @@
 	<?php include 'app/views/'.$content_view; ?>
 
 
-    <script src="/js/jquery-1.6.2.js" type="text/javascript"></script>
+    <script src="/js/jquery3.min.js" type="text/javascript"></script>
+    <script src="/js/script.js" type="text/javascript"></script>
+    <script src="/js/index.js" type="text/javascript"></script>
 </body>
 </html>
