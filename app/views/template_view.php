@@ -10,19 +10,20 @@
 	<title>Главная</title>
 </head>
 <body>
-	<?php include 'app/views/'.$content_view; ?>
+    <header class="header">
+        <form class="leng">
+            <div class="item ru"><input class="hidden" type="checkbox">RU</div>
+            <div class="item en"><input class="hidden" type="checkbox">EN</div>
+        </form>
+    </header>
+	<div class="content_wrap">
+        <?php include 'app/views/'.$content_view; ?>
+    </div>
 
 
     <script src="/js/jquery3.min.js" type="text/javascript"></script>
-    <script src="/js/jquery.backgroundMove.js" type="text/javascript"></script>
     <script defer src="/js/script.js" type="text/javascript"></script>
 	<script defer src="/js/fontawesome.js" crossorigin="anonymous"></script>
     <script defer src="/js/index.js" type="text/javascript"></script>
-
-    <script defer type="text/javascript">
-        $('.cotn_principal').backgroundMove({
-            movementStrength:'50'
-        });
-    </script>
 </body>
 </html>
