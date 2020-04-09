@@ -26,8 +26,7 @@ class Controller_Login extends Controller
 		else
 		{
 			print $this->model->success;
-			// Redirection to user page
-			print "<script>setTimeout(function() {window.location.href='/'}, 1000)</script>";
+			return true;
 		}
 	}
 }

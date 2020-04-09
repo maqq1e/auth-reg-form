@@ -22,8 +22,7 @@ class Controller_Send_Image extends Controller
 		{
 			$this->model->set_data($data);
 			print $this->model->success;
-			// Redirection to user page
-			print "<script>setTimeout(function() {window.location.href='/'}, 1000)</script>";
+			return true;
 		}
 	}
 }

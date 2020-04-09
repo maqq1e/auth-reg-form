@@ -26,6 +26,11 @@ class Route
 		{
 			header('Location: /reg');
 		}
+		// If user is login already
+		if(($controller_name == 'reg') && $_SESSION['userid'])
+		{
+			header('Location: /');
+		}
 
 		// Add prefix
         $model_name         = 'Model_'.$controller_name;

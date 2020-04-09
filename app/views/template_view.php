@@ -17,6 +17,10 @@
                 <input type="radio" name="sortType" value="Popularity" id="sort-best"><label for="sort-best">RU</label>
             </span>
         </form>
+        <div class="logout_wrap">
+            <button id="logout">Logout</button>
+            <div class="output"></div>
+        </div>
     </header>
     <?php include 'app/views/'.$content_view; ?>
 

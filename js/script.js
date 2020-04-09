@@ -5,7 +5,10 @@ function registNewUser() {
     $.ajax({
         type: "POST",
         url: "register",
-        data: { login: login, password: password, password2: password2 }
+        data: { login: login, password: password, password2: password2 },
+        success: function() {
+            setTimeout(function() {window.location.href='/'}, 500)
+        }
     }).done(function (result) {
         $(".reg_wrap .output").html(result)
     });
@@ -17,9 +20,24 @@ function loginUser() {
     $.ajax({
         type: "POST",
         url: "login",
-        data: { login: login, password: password }
+        data: { login: login, password: password },
+        success: function() {
+            setTimeout(function() {window.location.href='/'}, 500)
+        }
     }).done(function (result) {
         $(".log_wrap .output").html(result)
+    });
+}
+function logoutUser() {
+    $.ajax({
+        type: "POST",
+        url: "logout",
+        data: { status: 'OK' },
+        success: function() {
+            setTimeout(function() {window.location.href='/reg'}, 500)
+        }
+    }).done(function (result) {
+        $(".logout_wrap .output").html(result)
     });
 }
 
@@ -32,6 +50,11 @@ document.querySelectorAll('#reg').forEach(function (el) {
 document.querySelectorAll('#log').forEach(function (el) {
     el.onclick = function () {
         loginUser()
+    }
+})
+document.querySelectorAll('#logout').forEach(function (el) {
+    el.onclick = function () {
+        logoutUser()
     }
 })
 
@@ -57,7 +80,10 @@ document.querySelectorAll('#load_img').forEach(function (el) {
             processData: false,
             contentType: false,
             cache: false,
-            timeout: 600000
+            timeout: 600000,
+            success: function() {
+                setTimeout(function() {window.location.href='/'}, 500)
+            }
         }).done(function (result) {
             $(".send_img_wrap button").html(result)
         })
