@@ -26,7 +26,7 @@ class Model_Register extends Model
         // Set user
         $is_reg             = $this->db->insertUser($data);
         // Create session
-        $_SESSION['userid'] = $this->db->getUserIdByLogin($data['login']);
+        $_SESSION['userid'] = $this->db->getUserIdByLogin($data['login'])['id'];
     }
 
     public function verificateData($data)
@@ -41,7 +41,7 @@ class Model_Register extends Model
         }
         if($data['password'] != $data['password2'])
         {
-            $this->error[]  = "<h2 class='error'>You passwords are mismatched!</h2>";
+            $this->error[]  = "<h2 class='error'>Your passwords are mismatched!</h2>";
         }
         $data['login']      = isset($data['login']) ? $data['login'] : die("<h1>Login - Error in system - check your input form</h1>");
         $data['password']   = isset($data['password']) ? $data['password'] : die("<h1>Password - Error in system - check your input form</h1>");

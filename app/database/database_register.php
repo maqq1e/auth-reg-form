@@ -10,7 +10,7 @@ class Database_Register extends Database
                 SET
                     login 			= :login,
                     password 		= :password,
-                    leng            = :leng,';
+                    leng            = :leng';
 
         $vars = array(
             ':login' 				=> $data['login'],

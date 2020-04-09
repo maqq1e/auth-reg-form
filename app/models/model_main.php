@@ -17,6 +17,11 @@ class Model_Main extends Model
         {
             // Get user info
             $result     = $this->db->getOneUserByUserID($user_id);
+            // If null - delete session
+            if(!$result)
+            {
+                $_SESSION['userid'] = '';
+            }
             $result['pic']   = $this->db->getUserImage($user_id)['src'];
             // If pic is not exist for user - set default
             if(!$result['pic'])

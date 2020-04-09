@@ -6,8 +6,10 @@ function registNewUser() {
         type: "POST",
         url: "register",
         data: { login: login, password: password, password2: password2 },
-        success: function() {
-            setTimeout(function() {window.location.href='/'}, 500)
+        success: function(result) {
+            if(result == '<h2 class=\'success\'>Success!</h2>') {
+                setTimeout(function() {window.location.href='/'}, 500)
+            }
         }
     }).done(function (result) {
         $(".reg_wrap .output").html(result)
@@ -24,9 +26,6 @@ function loginUser() {
             if(result == '<h2 class=\'success\'>Success!</h2>') {
                 setTimeout(function() {window.location.href='/'}, 500)
             }
-        },
-        error: function(el) {
-            console.log(el)
         }
     }).done(function (result) {
         $(".log_wrap .output").html(result)
@@ -38,11 +37,9 @@ function logoutUser() {
         url: "logout",
         data: { status: 'OK' },
         success: function() {
-            setTimeout(function() {window.location.href='/reg'}, 500)
+            setTimeout(function() {window.location.href='/'}, 500)
         }
-    }).done(function (result) {
-        $(".logout_wrap .output").html(result)
-    });
+    })
 }
 function switchLeng(leng) {
     $.ajax({
@@ -99,8 +96,10 @@ document.querySelectorAll('#load_img').forEach(function (el) {
             contentType: false,
             cache: false,
             timeout: 600000,
-            success: function() {
-                setTimeout(function() {window.location.href='/'}, 500)
+            success: function(result) {
+                if(result == '<h2 class=\'success\'>Success!</h2>') {
+                    setTimeout(function() {window.location.href='/'}, 500)
+                }
             }
         }).done(function (result) {
             $(".send_img_wrap button").html(result)
