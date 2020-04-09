@@ -9,6 +9,10 @@ class Model_Login extends Model
 
     public function __construct() {
         $this->db = new Database_Login();
+        if($_SESSION['leng'] == 'ru')
+        {
+            $this->success = "<h2 class='success'>Успех!</h2>";
+        }
     }
 
 	public function get_login($data)
@@ -27,12 +31,26 @@ class Model_Login extends Model
             }
             else
             {
-                $this->error[] = "<h2 class='error'>Incorrent login or password!</h2>";
+                if($_SESSION['leng'] == 'ru')
+                {
+                    $this->error[] = "<h2 class='error'>Неверный логин или пароль!</h2>";
+                }
+                else
+                {
+                    $this->error[] = "<h2 class='error'>Incorrent login or password!</h2>";
+                }
             }
         }
         else
         {
-            $this->error[] = "<h2 class='error'>Incorrent login or password!</h2>";
+            if($_SESSION['leng'] == 'ru')
+            {
+                $this->error[] = "<h2 class='error'>Неверный логин или пароль!</h2>";
+            }
+            else
+            {
+                $this->error[] = "<h2 class='error'>Incorrent login or password!</h2>";
+            }
         }
     }
 
@@ -40,11 +58,25 @@ class Model_Login extends Model
     {
         if(empty($data['login']))
         {
-            $this->error[]  = "<h2 class='error'>You must enter login!</h2>";
+            if($_SESSION['leng'] == 'ru')
+            {
+                $this->error[]  = "<h2 class='error'>Вы должны ввести логин!</h2>";
+            }
+            else
+            {
+                $this->error[]  = "<h2 class='error'>You must enter login!</h2>";
+            }
         }
         if(empty($data['password']))
         {
-            $this->error[]  = "<h2 class='error'>You must enter password!</h2>";
+            if($_SESSION['leng'] == 'ru')
+            {
+                $this->error[]  = "<h2 class='error'>Вы должны ввести пароль!</h2>";
+            }
+            else
+            {
+                $this->error[]  = "<h2 class='error'>You must enter password!</h2>";
+            }
         }
 
         $data['login']      = isset($data['login']) ? $data['login'] : die("<h1>Login - Error in system - check your input form</h1>");
@@ -53,9 +85,7 @@ class Model_Login extends Model
 
         if(count($this->error) > 0)
 		{
-			foreach ($this->error as $error) {
-				print($error);
-			}
+            print($this->error[0]);
 			return false;
         }
 

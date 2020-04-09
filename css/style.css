@@ -68,6 +68,9 @@ footer .links_wrap li {
     width: 100px;
     font-size: 50px;
 }
+footer .links_wrap li a {
+    color: #551a8b;
+}
 footer .links_wrap li i {
     transition: all ease .3s;
 }
@@ -567,7 +570,7 @@ a.more-link {
 
 .cont_forms_active_sign_up {
     box-shadow: 1px 10px 30px -10px rgba(0, 0, 0, 0.5);
-    height: 420px;
+    height: 470px;
     top: 20px;
     left: 320px;
     -webkit-transition: all 0.5s;
@@ -604,7 +607,7 @@ a.more-link {
 }
 
 .cont_img_back_>img {
-    width: 100%;
+    width: 150%;
     opacity: 0.3;
     animation-name: animar_fondo;
     animation-duration: 20s;
@@ -711,6 +714,13 @@ a.more-link {
     color: #fff;
     margin-top: 10px;
     cursor: pointer;
+    transition: all ease .3s;
+}
+#reg:disabled {
+    background-color: #211e1e;
+}
+#log:disabled {
+    background-color: #211e1e;
 }
 
 .cont_forms_active_sign_up {
@@ -827,7 +837,7 @@ a.more-link {
     text-align: left;
     padding: 15px 5px;
     margin-left: 10px;
-    margin-top: 20px;
+    margin-top: 5px;
     width: 260px;
     border: none;
     color: #757575;
@@ -842,7 +852,7 @@ a.more-link {
 .cont_form_login>input {
     padding: 15px 5px;
     margin-left: 10px;
-    margin-top: 20px;
+    margin-top: 5px;
     width: 260px;
     border: none;
     text-align: left;
@@ -850,7 +860,7 @@ a.more-link {
 }
 
 .cont_form_login>h2 {
-    margin-top: 110px;
+    margin-top: 80px;
     font-weight: 400;
     color: #757575;
 }

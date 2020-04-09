@@ -22,9 +22,7 @@ class Controller_Register extends Controller
 		// Print all erorrs ( if exist )
 		if(count($this->model->error) > 0)
 		{
-			foreach ($this->model->error as $error) {
-				print($error);
-			}
+			print($this->model->error[0]);
 			return "You have some errors - you must fix it!";
 		}
 		else

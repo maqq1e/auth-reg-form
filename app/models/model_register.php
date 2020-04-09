@@ -9,6 +9,10 @@ class Model_Register extends Model
 
     public function __construct() {
         $this->db = new Database_Register();
+        if($_SESSION['leng'] == 'ru')
+        {
+            $this->success = "<h2 class='success'>Успех!</h2>";
+        }
     }
 
 	public function set_data($data)
@@ -18,7 +22,14 @@ class Model_Register extends Model
         $is_exist           = $this->db->getUserByUserLogin($login);
         if($is_exist)
         {
-            $this->error[]  = "<h2 class='error'>This user is already exist!</h2>";
+            if($_SESSION['leng'] == 'ru')
+            {
+                $this->error[]  = "<h2 class='error'>Такой пользователь уже существует!</h2>";
+            }
+            else
+            {
+                $this->error[]  = "<h2 class='error'>This user is already exist!</h2>";
+            }
             return false;
         }
         // Set password
@@ -33,15 +44,36 @@ class Model_Register extends Model
     {
         if(empty($data['login']))
         {
-            $this->error[]  = "<h2 class='error'>You must enter login!</h2>";
+            if($_SESSION['leng'] == 'ru')
+            {
+                $this->error[]  = "<h2 class='error'>Вы должны ввести логин!</h2>";
+            }
+            else
+            {
+                $this->error[]  = "<h2 class='error'>You must enter login!</h2>";
+            }
         }
         if(empty($data['password']))
         {
-            $this->error[]  = "<h2 class='error'>You must enter password!</h2>";
+            if($_SESSION['leng'] == 'ru')
+            {
+                $this->error[]  = "<h2 class='error'>Вы должны ввести пароль!</h2>";
+            }
+            else
+            {
+                $this->error[]  = "<h2 class='error'>You must enter password!</h2>";
+            }
         }
         if($data['password'] != $data['password2'])
         {
-            $this->error[]  = "<h2 class='error'>Your passwords are mismatched!</h2>";
+            if($_SESSION['leng'] == 'ru')
+            {
+                $this->error[]  = "<h2 class='error'>Пароли не совпадают!</h2>";
+            }
+            else
+            {
+                $this->error[]  = "<h2 class='error'>Your passwords are mismatched!</h2>";
+            }
         }
         $data['login']      = isset($data['login']) ? $data['login'] : die("<h1>Login - Error in system - check your input form</h1>");
         $data['password']   = isset($data['password']) ? $data['password'] : die("<h1>Password - Error in system - check your input form</h1>");
@@ -49,9 +81,7 @@ class Model_Register extends Model
 
         if(count($this->error) > 0)
 		{
-			foreach ($this->error as $error) {
-				print($error);
-			}
+            print($this->error[0]);
 			return "You have some errors - you must fix it!";
         }
 

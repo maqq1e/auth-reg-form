@@ -38,10 +38,8 @@
     </div>
     <footer>
         <ul class="links_wrap">
-            <li><a class="telegram" href="#" target="_blank"><i class="fa fa-telegram" aria-hidden="true"></i></a></li>
-            <li><a class="gmail" href="#" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a></li>
-            <li><a class="discord" href="#" target="_blank"><i class="fab fa-discord" aria-hidden="true"></i></a></li>
-            <li><a class="linkedin" href="#" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+            <li><a class="telegram" href="http://t.me/maqqIe" target="_blank"><i class="fa fa-telegram" aria-hidden="true"></i></a></li>
+            <li><a class="gmail" href="mailto:daniel.hramkov@gmail.com" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a></li>
         </ul>
     </footer>
 
