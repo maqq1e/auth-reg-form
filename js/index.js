@@ -100,109 +100,82 @@ $.ajax({
     data: { status: 'OK' },
 }).done(function (result) {
     sessionData = JSON.parse(result)
+    var lengDict = {}
     // Check language
     if(sessionData['leng'] == 'ru') {
-        // Default validate for input's
-        new Input_Validation('login_login', /[a-z]{4}[a-z]/, 'This field is required!', 'Вы не правильно ввели свой логин.')
-        new Input_Validation('login_password', /./, 'This field is required!')
-        new Input_Validation('register_login', /[a-z]{4}[a-z]/, 'This field is required!', 'Логин должен быть длинее 4 символов и не может содержать символы, отличные от латиницы.')
-        new Input_Validation('register_password', /./, 'This field is required!')
-        new Input_Validation('register_password_confirm', /./, 'This field is required!')
-        // Not default validate for input's
-        var pass                = document.querySelector('#register_password')
-        var pass_shell          = document.querySelector('#req_register_password')
-        var pass_confirm        = document.querySelector('#register_password_confirm')
-        var pass_confirm_shell  = document.querySelector('#req_register_password_confirm')
-        var login_login_shell   = document.querySelector('#req_login_login')
-        var login_pass          = document.querySelector('#login_password')
-        var login_pass_shell    = document.querySelector('#req_login_password')
-
-        var log_btn = document.querySelector('#log')
-        var reg_btn = document.querySelector('#reg')
-
-        pass.onblur = function() {
-            var length      = pass.value.length > 0 // If pass not empty
-            var isBadLimit  = pass.value.length > 0 && pass.value.length < 5 // If pass less then 5 symbols
-            var isLetters   = /[a-zA-Z]/.test(pass.value) // If in pass include letters
-            var isNum       = /[0-9]/.test(pass.value) // If in pass include numbers
-            if( length && (isBadLimit || !isLetters || !isNum)) {
-                pass.style.borderBottom = "5px solid #d2b23e";
-                pass_shell.innerHTML = "Будьте аккуратны, ваш пароль не безопасен. Попробуйте его усложнить."
-            }
-        }
-        pass_confirm.onblur = function() {
-            if(pass.value != pass_confirm.value) {
-                pass_confirm.style.borderBottom = "5px solid red";
-                pass_confirm_shell.innerHTML = "Пароли не совпадают!"
-            }
-            // If error is exist - disabled button
-            if(pass_confirm_shell.innerHTML == '') {
-                reg_btn.removeAttribute('disabled')
-            }
-            else {
-                reg_btn.setAttribute('disabled', '1')
-            }
-        }
-        login_pass.onblur = function() {
-            // If error is exist - disabled button
-            if(login_login_shell.innerHTML == '' && login_pass_shell.innerHTML == '') {
-                log_btn.removeAttribute('disabled')
-            }
-            else {
-                log_btn.setAttribute('disabled', '1')
-            }
+        lengDict = {
+            "_empty": "Это поле обязательно!",
+            "login_login": {
+                "error" : "Вы не правильно ввели свой логин."
+            },
+            "register_login": {
+                "error" : "Логин должен быть длинее 4 символов и не может содержать символы, отличные от латиницы."
+            },
+            "pass_shell": "Будьте аккуратны, ваш пароль не безопасен. Попробуйте его усложнить.",
+            "pass_confirm_shell": "Пароли не совпадают!",
         }
     }
     else {
-         // Default validate for input's
-         new Input_Validation('login_login', /[a-z]{4}[a-z]/, 'This field is required!', 'Your login is incorrect.')
-         new Input_Validation('login_password', /./, 'This field is required!')
-         new Input_Validation('register_login', /[a-z]{4}[a-z]/, 'This field is required!', 'Login must be longer 4 symbols and can\'t incude latin script.')
-         new Input_Validation('register_password', /./, 'This field is required!')
-         new Input_Validation('register_password_confirm', /./, 'This field is required!')
-         // Not default validate for input's
-         var pass                = document.querySelector('#register_password')
-         var pass_shell          = document.querySelector('#req_register_password')
-         var pass_confirm        = document.querySelector('#register_password_confirm')
-         var pass_confirm_shell  = document.querySelector('#req_register_password_confirm')
-         var login_login_shell   = document.querySelector('#req_login_login')
-         var login_pass          = document.querySelector('#login_password')
-         var login_pass_shell    = document.querySelector('#req_login_password')
+        lengDict = {
+            "_empty": "This field is required!",
+            "login_login": {
+                "error" : "'Your login is incorrect."
+            },
+            "register_login": {
+                "error" : "Login must be longer 4 symbols and can\'t incude latin script."
+            },
+            "pass_shell": "Be safety! You password is not safe. Try to strong it.",
+            "pass_confirm_shell": "Passwords are mismatch!",
+        }
+    }
+    // Default validate for input's
+    new Input_Validation('login_login', /[a-z]{4}[a-z]/, lengDict['_empty'], lengDict['login_login']['error'])
+    new Input_Validation('login_password', /./, lengDict['_empty'])
+    new Input_Validation('register_login', /[a-z]{4}[a-z]/, lengDict['_empty'], lengDict['register_login']['error'])
+    new Input_Validation('register_password', /./, lengDict['_empty'])
+    new Input_Validation('register_password_confirm', /./, lengDict['_empty'])
+    // Not default validate for input's
+    var pass                = document.querySelector('#register_password')
+    var pass_shell          = document.querySelector('#req_register_password')
+    var pass_confirm        = document.querySelector('#register_password_confirm')
+    var pass_confirm_shell  = document.querySelector('#req_register_password_confirm')
+    var login_login_shell   = document.querySelector('#req_login_login')
+    var login_pass          = document.querySelector('#login_password')
+    var login_pass_shell    = document.querySelector('#req_login_password')
 
-         var log_btn = document.querySelector('#log')
-         var reg_btn = document.querySelector('#reg')
+    var log_btn = document.querySelector('#log')
+    var reg_btn = document.querySelector('#reg')
 
-         pass.onblur = function() {
-             var length      = pass.value.length > 0 // If pass not empty
-             var isBadLimit  = pass.value.length > 0 && pass.value.length < 5 // If pass less then 5 symbols
-             var isLetters   = /[a-zA-Z]/.test(pass.value) // If in pass include letters
-             var isNum       = /[0-9]/.test(pass.value) // If in pass include numbers
-             if( length && (isBadLimit || !isLetters || !isNum)) {
-                 pass.style.borderBottom = "5px solid #d2b23e";
-                 pass_shell.innerHTML = "Be safety! You password is not safe. Try to strong it."
-             }
-         }
-         pass_confirm.onblur = function() {
-             if(pass.value != pass_confirm.value) {
-                 pass_confirm.style.borderBottom = "5px solid red";
-                 pass_confirm_shell.innerHTML = "Passwords are mismatch!"
-             }
-             // If error is exist - disabled button
-             if(pass_confirm_shell.innerHTML == '') {
-                 reg_btn.removeAttribute('disabled')
-             }
-             else {
-                 reg_btn.setAttribute('disabled', '1')
-             }
-         }
-         login_pass.onblur = function() {
-             // If error is exist - disabled button
-             if(login_login_shell.innerHTML == '' && login_pass_shell.innerHTML == '') {
-                 log_btn.removeAttribute('disabled')
-             }
-             else {
-                 log_btn.setAttribute('disabled', '1')
-             }
-         }
+    pass.onblur = function() {
+        var length      = pass.value.length > 0 // If pass not empty
+        var isBadLimit  = pass.value.length > 0 && pass.value.length < 5 // If pass less then 5 symbols
+        var isLetters   = /[a-zA-Z]/.test(pass.value) // If in pass include letters
+        var isNum       = /[0-9]/.test(pass.value) // If in pass include numbers
+        if( length && (isBadLimit || !isLetters || !isNum)) {
+            pass.style.borderBottom = "5px solid #d2b23e";
+            pass_shell.innerHTML = lengDict['pass_shell']
+        }
+    }
+    pass_confirm.onblur = function() {
+        if(pass.value != pass_confirm.value) {
+            pass_confirm.style.borderBottom = "5px solid red";
+            pass_confirm_shell.innerHTML = lengDict['pass_confirm_shell']
+        }
+        // If error is exist - disabled button
+        if(pass_confirm_shell.innerHTML == '') {
+            reg_btn.removeAttribute('disabled')
+        }
+        else {
+            reg_btn.setAttribute('disabled', '1')
+        }
+    }
+    login_pass.onblur = function() {
+        // If error is exist - disabled button
+        if(login_login_shell.innerHTML == '' && login_pass_shell.innerHTML == '') {
+            log_btn.removeAttribute('disabled')
+        }
+        else {
+            log_btn.setAttribute('disabled', '1')
+        }
     }
 });
