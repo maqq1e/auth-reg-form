@@ -9,6 +9,10 @@ class Model_Send_Image extends Model
 
     public function __construct() {
         $this->db = new Database_Send_Image();
+        if($_SESSION['leng'] == 'ru')
+        {
+            $this->success = "<h2 class='success'>Успех!</h2>";
+        }
     }
 
 	public function set_data($data)
