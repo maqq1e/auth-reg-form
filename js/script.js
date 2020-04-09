@@ -6,7 +6,7 @@ function registNewUser() {
         type: "POST",
         url: "register",
         data: { login: login, password: password, password2: password2 },
-        success: function() {
+        success: function(res) {
             setTimeout(function () { window.location.href = '/' }, 500)
         },
         error: function(result) {
@@ -36,6 +36,9 @@ function logoutUser() {
         data: { status: 'OK' },
         success: function() {
             setTimeout(function() {window.location.href='/'}, 500)
+        },
+        error: function(res) {
+            console.log(res);
         }
     })
 }
@@ -98,10 +101,8 @@ document.querySelectorAll('#load_img').forEach(function (el) {
                 setTimeout(function () { window.location.href = '/' }, 500)
             },
             error: function(result) {
-                $(".log_wrap .output").html(result.responseText)
+                $(".send_img_wrap .output").html(result.responseText)
             }
-        }).done(function (result) {
-            $(".send_img_wrap button").html(result)
         })
 
     }

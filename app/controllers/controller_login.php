@@ -24,7 +24,7 @@ class Controller_Login extends Controller
 		{
 			header("HTTP/1.0 400 Bad Request");
 			print($this->model->error[0]);
-			return "You have some errors - you must fix it!";
+			return false;
 		}
 		else
 		{

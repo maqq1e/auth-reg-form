@@ -13,7 +13,7 @@ class Controller_Register extends Controller
 		// Verificate date from user
 		$data = $this->model->verificateData($_POST);
 		// If return string ( fatal error )
-		if($data)
+		if(!$data)
 		{
 			return false;
 		}

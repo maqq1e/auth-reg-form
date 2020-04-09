@@ -85,7 +85,6 @@ class Model_Register extends Model
             print($this->error[0]);
 			return false;
         }
-
         return $data;
     }
 

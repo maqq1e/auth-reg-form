@@ -457,9 +457,10 @@ footer .links_wrap li i:hover {
     box-sizing: border-box;
 }
 
-h1 {
+.title {
     text-align: center;
-    margin: 30px 15px;
+    margin: 0 15px;
+    padding-top: 50px;
 }
 
 .zoom-area {
