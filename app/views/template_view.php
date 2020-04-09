@@ -28,7 +28,11 @@
         </form>
         <?php if($_SESSION['userid']):?>
             <div class="logout_wrap">
-                <button id="logout">Logout</button>
+                <?php if($_SESSION['leng'] == 'ru'):?>
+                    <button id="logout">Выйти</button>
+                <?php else:?>
+                    <button id="logout">Logout</button>
+                <?php endif;?>
                 <div class="output"></div>
             </div>
         <?php endif;?>

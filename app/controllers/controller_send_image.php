@@ -12,13 +12,16 @@ class Controller_Send_Image extends Controller
 	{
 		// Verificate date from user
 		$data = $this->model->verificateData($_FILES['upload']);
+		if(!$data)
+		{
+			return false;
+		}
 		// Print all erorrs ( if exist )
 		if(count($this->model->error) > 0)
 		{
-			foreach ($this->model->error as $error) {
-				print($error);
-			}
-			return "You have some errors - you must fix it!";
+			header("HTTP/1.0 400 Bad Request");
+			print($this->model->error[0]);
+			return false;
 		}
 		else
 		{

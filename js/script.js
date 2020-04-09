@@ -97,11 +97,12 @@ document.querySelectorAll('#load_img').forEach(function (el) {
             contentType: false,
             cache: false,
             timeout: 600000,
-            success: function() {
+            success: function(result) {
                 setTimeout(function () { window.location.href = '/' }, 500)
+                $(".send_img_wrap button").html(result)
             },
             error: function(result) {
-                $(".send_img_wrap .output").html(result.responseText)
+                $(".send_img_wrap button").html(result.responseText)
             }
         })
 

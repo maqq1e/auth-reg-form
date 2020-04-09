@@ -26,13 +26,15 @@ class Model_Send_Image extends Model
         if($_SESSION['leng'] == 'ru')
         {
             if (!move_uploaded_file($filePath, $src)) {
-                die('При записи изображения на диск произошла ошибка.');
+                print('При записи изображения на диск произошла ошибка.');
+                return false;
             }
         }
         else
         {
             if (!move_uploaded_file($filePath, $src)) {
-                die('Cannot write file in disk.');
+                print('Cannot write file in disk.');
+                return false;
             }
         }
         // Save in database url to picture
@@ -84,7 +86,9 @@ class Model_Send_Image extends Model
 
             $outputMessage = isset($errorMessages[$errorCode]) ? $errorMessages[$errorCode] : $unknownMessage;
 
-            die($outputMessage);
+			header("HTTP/1.0 400 Bad Request");
+            print($outputMessage);
+            return false;
         }
         // Create soure of FileInfo
         $fi = finfo_open(FILEINFO_MIME_TYPE);
@@ -93,11 +97,11 @@ class Model_Send_Image extends Model
         // Check keyword image (image/jpeg, image/png etc.)
         if($_SESSION['leng'] == 'ru')
         {
-            if (strpos($mime, 'image') === false) die('Можно загружать только изображения.');
+            if (strpos($mime, 'image') === false) {print('Можно загружать только изображения.'); return false;};
         }
         else
         {
-            if (strpos($mime, 'image') === false) die('You can upload only images.');
+            if (strpos($mime, 'image') === false) {print('You can upload only images.'); return false;};
         }
         // Get validation
         $image = getimagesize($filePath);
@@ -108,15 +112,15 @@ class Model_Send_Image extends Model
         // Check params
         if($_SESSION['leng'] == 'ru')
         {
-            if (filesize($filePath) > $limitBytes) die('Размер изображения не должен превышать 5 Мбайт.');
-            if ($image[1] > $limitHeight)          die('Высота изображения не должна превышать 768 точек.');
-            if ($image[0] > $limitWidth)           die('Ширина изображения не должна превышать 1280 точек.');
+            if (filesize($filePath) > $limitBytes) {print('Размер изображения не должен превышать 5 Мбайт.'); return false;};
+            if ($image[1] > $limitHeight)          {print('Высота изображения не должна превышать 768 точек.'); return false;};
+            if ($image[0] > $limitWidth)           {print('Ширина изображения не должна превышать 1280 точек.'); return false;};
         }
         else
         {
-            if (filesize($filePath) > $limitBytes) die('File wieght must be less 5 Mbait.');
-            if ($image[1] > $limitHeight)          die('File height must be less 2820 px.');
-            if ($image[0] > $limitWidth)           die('File width must be less 3280 px.');
+            if (filesize($filePath) > $limitBytes) {print('File wieght must be less 5 Mbait.'); return false;};
+            if ($image[1] > $limitHeight)          {print('File height must be less 2820 px.'); return false;};
+            if ($image[0] > $limitWidth)           {print('File width must be less 3280 px.'); return false;};
         }
 
         return $data;
