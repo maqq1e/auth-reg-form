@@ -52,7 +52,7 @@
                         <div class="error" id="req_login_login"></div>
                         <input id="login_password" type="password" class="password" name="password" placeholder="Ваш пароль" />
                         <div class="error" id="req_login_password"></div>
-                        <button class="btn_login" disabled="true" id="log" onclick="cambiar_login()">ВОЙТИ</button>
+                        <button class="btn_login" id="log" onclick="cambiar_login()">ВОЙТИ</button>
                         <div class='output'></div>
                     <?php else:?>
                         <a href="#" onclick="ocultar_login_sign_up()"><i class="fas fa-arrow-left"></i></a>
@@ -61,7 +61,7 @@
                         <div class="error" id="req_login_login"></div>
                         <input id="login_password" type="password" class="password" name="password" placeholder="Your password" />
                         <div class="error" id="req_login_password"></div>
-                        <button class="btn_login" disabled="true" id="log" onclick="cambiar_login()">LOGIN</button>
+                        <button class="btn_login" id="log" onclick="cambiar_login()">LOGIN</button>
                         <div class='output'></div>
                     <?php endif;?>
                 </div>
@@ -75,7 +75,7 @@
                         <div class="error" id="req_register_password"></div>
                         <input id="register_password_confirm" type="password" class="password2" name="password2" placeholder="Подтвердите пароль" />
                         <div class="error" id="req_register_password_confirm"></div>
-                        <button class="btn_sign_up" disabled="true" id="reg" onclick="cambiar_sign_up()">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+                        <button class="btn_sign_up" id="reg" onclick="cambiar_sign_up()">ЗАРЕГИСТРИРОВАТЬСЯ</button>
                         <div class='output'></div>
                     <?php else:?>
                         <a href="#" onclick="ocultar_login_sign_up()"><i class="fas fa-arrow-left"></i></a>
@@ -86,7 +86,7 @@
                         <div class="error" id="req_register_password"></div>
                         <input id="register_password_confirm" type="password" class="password2" name="password2" placeholder="Confirm Password" />
                         <div class="error" id="req_register_password_confirm"></div>
-                        <button class="btn_sign_up" disabled="true" id="reg" onclick="cambiar_sign_up()">SIGN UP</button>
+                        <button class="btn_sign_up" id="reg" onclick="cambiar_sign_up()">SIGN UP</button>
                         <div class='output'></div>
                     <?php endif;?>
                 </div>

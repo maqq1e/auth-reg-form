@@ -75,14 +75,15 @@ class Model_Register extends Model
                 $this->error[]  = "<h2 class='error'>Your passwords are mismatched!</h2>";
             }
         }
-        $data['login']      = isset($data['login']) ? $data['login'] : die("<h1>Login - Error in system - check your input form</h1>");
-        $data['password']   = isset($data['password']) ? $data['password'] : die("<h1>Password - Error in system - check your input form</h1>");
+        $data['login']      = isset($data['login']) ? $data['login'] : die(header('Location: /'));
+        $data['password']   = isset($data['password']) ? $data['password'] : die(header('Location: /'));
         $data['leng']       = isset($_SESSION['leng']) ? $_SESSION['leng'] : "ru";
 
         if(count($this->error) > 0)
 		{
+			header("HTTP/1.0 400 Bad Request");
             print($this->error[0]);
-			return "You have some errors - you must fix it!";
+			return false;
         }
 
         return $data;

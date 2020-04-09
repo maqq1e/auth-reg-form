@@ -6,14 +6,13 @@ function registNewUser() {
         type: "POST",
         url: "register",
         data: { login: login, password: password, password2: password2 },
-        success: function(result) {
-            if(result == '<h2 class=\'success\'>Success!</h2>') {
-                setTimeout(function() {window.location.href='/'}, 500)
-            }
+        success: function() {
+            setTimeout(function () { window.location.href = '/' }, 500)
+        },
+        error: function(result) {
+            $(".reg_wrap .output").html(result.responseText)
         }
-    }).done(function (result) {
-        $(".reg_wrap .output").html(result)
-    });
+    })
 }
 function loginUser() {
     var login = $('.log_wrap .login').val()
@@ -22,14 +21,13 @@ function loginUser() {
         type: "POST",
         url: "login",
         data: { login: login, password: password },
-        success: function(result) {
-            if(result == '<h2 class=\'success\'>Success!</h2>') {
-                setTimeout(function() {window.location.href='/'}, 500)
-            }
+        success: function() {
+            setTimeout(function () { window.location.href = '/' }, 500)
+        },
+        error: function(result) {
+            $(".log_wrap .output").html(result.responseText)
         }
-    }).done(function (result) {
-        $(".log_wrap .output").html(result)
-    });
+    })
 }
 function logoutUser() {
     $.ajax({
@@ -96,10 +94,11 @@ document.querySelectorAll('#load_img').forEach(function (el) {
             contentType: false,
             cache: false,
             timeout: 600000,
-            success: function(result) {
-                if(result == '<h2 class=\'success\'>Success!</h2>') {
-                    setTimeout(function() {window.location.href='/'}, 500)
-                }
+            success: function() {
+                setTimeout(function () { window.location.href = '/' }, 500)
+            },
+            error: function(result) {
+                $(".log_wrap .output").html(result.responseText)
             }
         }).done(function (result) {
             $(".send_img_wrap button").html(result)
