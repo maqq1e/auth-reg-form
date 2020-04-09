@@ -6,7 +6,7 @@ class Database_Login extends Database
 
     public function getUserByUserLogin($login)
     {
-        $sql = 'SELECT id, login, password, leng, pic FROM ' . self::TABLE_USERS . '
+        $sql = 'SELECT id, login, password FROM ' . self::TABLE_USERS . '
                 WHERE
                     login 			= :login';
 

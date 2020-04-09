@@ -7,7 +7,7 @@ class Database_Main extends Database
 
     public function getOneUserByUserID($user_id)
     {
-        $sql = 'SELECT login, pic FROM '.self::TABLE_USERS.'
+        $sql = 'SELECT login FROM '.self::TABLE_USERS.'
                 WHERE
                     id 			= :user_id';
 

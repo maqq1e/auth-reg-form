@@ -9,6 +9,7 @@ class Controller_Logout extends Controller
 
 	function action_index()
 	{
+		// Delete session
 		$_SESSION['userid'] = '';
 		return true;
 	}

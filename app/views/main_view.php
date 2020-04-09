@@ -16,12 +16,20 @@
                         };
                     </script>
                 </label>
-                <button type="submit" id="load_img">Load new image</button>
+                <?php if($_SESSION['leng'] == 'ru'):?>
+                    <button type="submit" id="load_img">Загрузить новое изображение</button>
+                <?php else:?>
+                    <button type="submit" id="load_img">Load new image</button>
+                <?php endif;?>
             </div>
             <div class="output"></div>
         </from>
     </div>
     <div class="user_wrap">
-        <h1>Your name - <?=$data['login']?></h1>
+        <?php if($_SESSION['leng'] == 'ru'):?>
+            <h1>Ваш логин - <?=$data['login']?></h1>
+        <?php else:?>
+            <h1>Your login - <?=$data['login']?></h1>
+        <?php endif;?>
     </div>
 </div>

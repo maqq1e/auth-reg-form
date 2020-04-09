@@ -13,7 +13,6 @@ function registNewUser() {
         $(".reg_wrap .output").html(result)
     });
 }
-
 function loginUser() {
     var login = $('.log_wrap .login').val()
     var password = $('.log_wrap .password').val()
@@ -40,13 +39,22 @@ function logoutUser() {
         $(".logout_wrap .output").html(result)
     });
 }
+function switchLeng(leng) {
+    $.ajax({
+        type: "POST",
+        url: "switch_leng",
+        data: { leng: leng },
+        success: function() {
+            window.location.href='/'
+        }
+    })
+}
 
 document.querySelectorAll('#reg').forEach(function (el) {
     el.onclick = function () {
         registNewUser()
     }
 })
-
 document.querySelectorAll('#log').forEach(function (el) {
     el.onclick = function () {
         loginUser()
@@ -55,6 +63,11 @@ document.querySelectorAll('#log').forEach(function (el) {
 document.querySelectorAll('#logout').forEach(function (el) {
     el.onclick = function () {
         logoutUser()
+    }
+})
+document.querySelectorAll('.leng-switch').forEach(function (el) {
+    el.onclick = function () {
+        switchLeng(el.getAttribute('data-leng'))
     }
 })
 

@@ -14,11 +14,14 @@ class Model_Login extends Model
 	public function get_login($data)
     {
         $login              = $data["login"];
+        // Persuade that user is exist
         $is_exist           = $this->db->getUserByUserLogin($login);
         if($is_exist)
         {
+            // Check password
             if(password_verify($data['password'], $is_exist['password']))
             {
+                // Create session
                 $_SESSION['userid'] = $is_exist['id'];
                 $this->error = [];
             }

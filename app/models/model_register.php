@@ -14,14 +14,18 @@ class Model_Register extends Model
 	public function set_data($data)
     {
         $login              = $data["login"];
+        // Persuade that user is not exist already
         $is_exist           = $this->db->getUserByUserLogin($login);
         if($is_exist)
         {
             $this->error[]  = "<h2 class='error'>This user is already exist!</h2>";
             return false;
         }
+        // Set password
         $data               = $this->setHashToPass($data);
+        // Set user
         $is_reg             = $this->db->insertUser($data);
+        // Create session
         $_SESSION['userid'] = $this->db->getUserIdByLogin($data['login']);
     }
 
@@ -42,7 +46,6 @@ class Model_Register extends Model
         $data['login']      = isset($data['login']) ? $data['login'] : die("<h1>Login - Error in system - check your input form</h1>");
         $data['password']   = isset($data['password']) ? $data['password'] : die("<h1>Password - Error in system - check your input form</h1>");
         $data['leng']       = isset($_SESSION['leng']) ? $_SESSION['leng'] : "ru";
-        $data['pic']        = isset($data['pic']) ? $data['pic'] : 0;
 
         if(count($this->error) > 0)
 		{

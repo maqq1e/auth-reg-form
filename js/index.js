@@ -1,3 +1,5 @@
+/* #### - Auth and register form | START - #### */
+
 function cambiar_login() {
     document.querySelector('.cont_forms').className = "cont_forms cont_forms_active_login";
     document.querySelector('.cont_form_login').style.display = "block";
@@ -22,8 +24,6 @@ function cambiar_sign_up(at) {
     setTimeout(function () {
         document.querySelector('.cont_form_login').style.display = "none";
     }, 400);
-
-
 }
 
 function ocultar_login_sign_up() {
@@ -48,3 +48,5 @@ $('.dropdown-el').click(function (e) {
 $(document).click(function () {
     $('.dropdown-el').removeClass('expanded');
 });
+
+/* #### - Auth and register form | END - #### */

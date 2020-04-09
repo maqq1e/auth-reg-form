@@ -7,20 +7,31 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
     <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
 
-	<title>Главная</title>
+	<title><?=$page['title']?></title>
 </head>
 <body>
     <header class="header">
         <form class="leng">
             <span class="dropdown-el">
-                <input type="radio" name="sortType" value="Relevance" checked="checked" id="sort-relevance"><label for="sort-relevance">EN</label>
-                <input type="radio" name="sortType" value="Popularity" id="sort-best"><label for="sort-best">RU</label>
+                <?php if($_SESSION['leng'] == 'ru'):?>
+                    <input type="radio" name="sortType" value="Relevance" id="leng-en">
+                    <label data-leng="en" class="leng-switch" for="sort-relevance">EN</label>
+                    <input type="radio" name="sortType" value="Popularity" checked="checked" id="leng-ru">
+                    <label for="sort-best">RU</label>
+                <?php else:?>
+                    <input type="radio" name="sortType" value="Relevance" checked="checked" id="sort-relevance">
+                    <label for="sort-relevance">EN</label>
+                    <input type="radio" name="sortType" value="Popularity" id="sort-best">
+                    <label data-leng="ru" class="leng-switch" for="sort-best">RU</label>
+                <?php endif;?>
             </span>
         </form>
-        <div class="logout_wrap">
-            <button id="logout">Logout</button>
-            <div class="output"></div>
-        </div>
+        <?php if($_SESSION['userid']):?>
+            <div class="logout_wrap">
+                <button id="logout">Logout</button>
+                <div class="output"></div>
+            </div>
+        <?php endif;?>
     </header>
     <?php include 'app/views/'.$content_view; ?>
 

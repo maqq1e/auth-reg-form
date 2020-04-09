@@ -10,7 +10,9 @@ class Controller_Send_Image extends Controller
 
 	function action_index()
 	{
+		// Verificate date from user
 		$data = $this->model->verificateData($_FILES['upload']);
+		// Print all erorrs ( if exist )
 		if(count($this->model->error) > 0)
 		{
 			foreach ($this->model->error as $error) {
@@ -20,6 +22,7 @@ class Controller_Send_Image extends Controller
 		}
 		else
 		{
+			// Set data
 			$this->model->set_data($data);
 			print $this->model->success;
 			return true;
