@@ -33,8 +33,17 @@
             </div>
         <?php endif;?>
     </header>
-    <?php include 'app/views/'.$content_view; ?>
-
+    <div class="content_wrap">
+        <?php include 'app/views/'.$content_view; ?>
+    </div>
+    <footer>
+        <ul class="links_wrap">
+            <li><a class="telegram" href="#" target="_blank"><i class="fa fa-telegram" aria-hidden="true"></i></a></li>
+            <li><a class="gmail" href="#" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a></li>
+            <li><a class="discord" href="#" target="_blank"><i class="fab fa-discord" aria-hidden="true"></i></a></li>
+            <li><a class="linkedin" href="#" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+        </ul>
+    </footer>
 
     <script src="/js/jquery3.min.js" type="text/javascript"></script>
     <script defer src="/js/script.js" type="text/javascript"></script>

@@ -13,9 +13,9 @@ class Controller_Login extends Controller
 		// Verificate date from user
 		$data = $this->model->verificateData($_POST);
 		// If return string ( fatal error )
-		if(gettype($data) == 'string')
+		if(!$data)
 		{
-			return $data;
+			return false;
 		}
 		// Try to login
 		$this->model->get_login($data);

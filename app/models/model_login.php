@@ -30,7 +30,10 @@ class Model_Login extends Model
                 $this->error[] = "<h2 class='error'>Incorrent login or password!</h2>";
             }
         }
-
+        else
+        {
+            $this->error[] = "<h2 class='error'>Incorrent login or password!</h2>";
+        }
     }
 
     public function verificateData($data)

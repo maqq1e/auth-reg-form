@@ -20,8 +20,13 @@ function loginUser() {
         type: "POST",
         url: "login",
         data: { login: login, password: password },
-        success: function() {
-            setTimeout(function() {window.location.href='/'}, 500)
+        success: function(result) {
+            if(result == '<h2 class=\'success\'>Success!</h2>') {
+                setTimeout(function() {window.location.href='/'}, 500)
+            }
+        },
+        error: function(el) {
+            console.log(el)
         }
     }).done(function (result) {
         $(".log_wrap .output").html(result)
