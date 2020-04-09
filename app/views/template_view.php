@@ -12,13 +12,13 @@
 <body>
     <header class="header">
         <form class="leng">
-            <div class="item ru"><input class="hidden" type="checkbox">RU</div>
-            <div class="item en"><input class="hidden" type="checkbox">EN</div>
+            <span class="dropdown-el">
+                <input type="radio" name="sortType" value="Relevance" checked="checked" id="sort-relevance"><label for="sort-relevance">EN</label>
+                <input type="radio" name="sortType" value="Popularity" id="sort-best"><label for="sort-best">RU</label>
+            </span>
         </form>
     </header>
-	<div class="content_wrap">
-        <?php include 'app/views/'.$content_view; ?>
-    </div>
+    <?php include 'app/views/'.$content_view; ?>
 
 
     <script src="/js/jquery3.min.js" type="text/javascript"></script>

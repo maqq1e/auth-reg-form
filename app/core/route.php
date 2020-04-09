@@ -20,8 +20,9 @@ class Route
 		{
 			$action_name = $routes[2];
 		}
+
 		// If user is not login yet
-		if($controller_name == 'Main' && $_SESSION['user_id'])
+		if(($controller_name == 'Main') && !$_SESSION['userid'])
 		{
 			header('Location: /reg');
 		}

@@ -33,6 +33,17 @@ class Database_Register extends Database
         );
         return $this->getOne($sql, $vars);
     }
+    public function getUserIdByLogin($login)
+    {
+        $sql = 'SELECT id FROM ' . self::TABLE_USERS . '
+                WHERE
+                    login 			= :login';
+
+        $vars = array(
+            ':login' 				=> $login,
+        );
+        return $this->getOne($sql, $vars);
+    }
 
 }
 ?>

@@ -22,6 +22,7 @@ class Model_Register extends Model
         }
         $data               = $this->setHashToPass($data);
         $is_reg             = $this->db->insertUser($data);
+        $_SESSION['userid'] = $this->db->getUserIdByLogin($data['login']);
     }
 
     public function verificateData($data)
